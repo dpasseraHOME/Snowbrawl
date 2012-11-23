@@ -27,6 +27,10 @@ var actionIndex = 0;
 
 var index = 0;
 
+var loopInterval;
+
+var isPendingActionSwitch = false;
+
 $(document).ready(function() {
 	initButtons();
 	initAnimation();
@@ -44,8 +48,8 @@ function initAnimation() {
 
 	canvasBkgd[0].width = C_W;
 	canvasBkgd[0].height = C_H;
-	canvasFgd[0].width = C_W;
-	canvasFgd[0].height = C_H;
+	canvasFgd[0].width = FRAME_W;
+	canvasFgd[0].height = FRAME_H;
 
 	cBkgd = canvasBkgd[0].getContext('2d');
 	cFgd = canvasFgd[0].getContext('2d');
@@ -58,7 +62,7 @@ function initAnimation() {
 
 	sheet = new Image();
 	sheet.onload = function() {
-		setInterval(loop, 1000/FPS);
+		loopInterval = setInterval(loop, 1000/FPS);
 	}
 	sheet.src = "images/sprite_sheet1.gif";
 }
@@ -85,13 +89,12 @@ function startAction(buttonIdStr) {
 
 	}
 
-	index = 0;
-	fYPos = ACTION_Y[actionIndex] * FRAME_H;
-	numFrames = NUM_FRAMES[actionIndex];
+	isPendingActionSwitch = true;
 }
 
 function loop() {
 	cFgd.clearRect(0, 0, C_W, C_H);
+	console.log()
 	cFgd.drawImage(sheet, fXPos, fYPos, FRAME_W, FRAME_H, xPos, yPos, FRAME_W, FRAME_H);
 
 	fXPos += FRAME_W;
@@ -101,5 +104,15 @@ function loop() {
 	if(index >= numFrames) {
 		fXPos = 0;
 		index = 0;
+	}
+
+	if(isPendingActionSwitch) {
+		clearInterval(loopInterval);
+		index = 0;
+		fXPos = 0;
+		fYPos = ACTION_Y[actionIndex] * FRAME_H;
+		numFrames = NUM_FRAMES[actionIndex];
+		isPendingActionSwitch = false;
+		loopInterval = setInterval(loop, 1000/FPS);
 	}
 }
