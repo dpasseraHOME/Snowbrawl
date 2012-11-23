@@ -25,6 +25,13 @@
 
 	<canvas id="canvas_fgd"></canvas>
 
+	<div id="buttons_container">
+		<button id="button_walk">Walk</button>
+		<button id="button_run">Run</button>
+		<button id="button_throw">Throw</button>
+		<button id="button_kick">Kick</button>
+	</div>
+
 </body>
 
 </html>

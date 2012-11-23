@@ -1,0 +1,13 @@
+Now
+
+Next
+- refactor sprite sheet
+	- one action per row
+	- uniform row heights and column widths
+- trigger specific animations (use buttons as placeholder interface)
+- interruptable idle animation
+- size canvas to fit sprite frame
+- layer multiple canvases
+	- any performance degradation, if 12 sprites are doing their idle animations?
+	- if so, have frames without animation
+- character class?
