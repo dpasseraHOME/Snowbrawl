@@ -1,7 +1,113 @@
-#canvas_fgd
+/* team L */
+#char_dante
 {
 	position:absolute;
 	top:0;
 	left:0;
 	z-index:100;
+}
+
+#char_biko
+{
+	position:absolute;
+	top:20px;
+	left:0;
+	z-index:110;
+}
+
+#char_ken
+{
+	position:absolute;
+	top:40px;
+	left:0;
+	z-index:120;
+}
+
+#char_brittany
+{
+	position:absolute;
+	top:60px;
+	left:0;
+	z-index:130;
+}
+
+#char_chike
+{
+	position:absolute;
+	top:80px;
+	left:0;
+	z-index:140;
+}
+
+#char_charles
+{
+	position:absolute;
+	top:100px;
+	left:0;
+	z-index:150;
+}
+
+#char_brian
+{
+	position:absolute;
+	top:100px;
+	left:0;
+	z-index:160;
+}
+
+/* team R */
+#char_nick
+{
+	position:absolute;
+	top:0;
+	left:100px;
+	z-index:100;
+}
+
+#char_leonel
+{
+	position:absolute;
+	top:20px;
+	left:100px;
+	z-index:110;
+}
+
+#char_reid
+{
+	position:absolute;
+	top:40px;
+	left:100px;
+	z-index:120;
+}
+
+#char_alex
+{
+	position:absolute;
+	top:60px;
+	left:100px;
+	z-index:130;
+}
+
+#char_eric
+{
+	position:absolute;
+	top:80px;
+	left:100px;
+	z-index:140;
+}
+
+#char_david
+{
+	position:absolute;
+	top:100px;
+	left:100px;
+	z-index:150;
+}
+
+#char_jonathan
+{
+	position:absolute;
+	top:100px;
+	left:100px;
+	z-index:160;
 }

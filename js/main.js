@@ -1,118 +1,56 @@
-var C_W = 640;
-var C_H = 480;
-var NUM_FRAMES = [3,2,3,3,6];
+var FPS = 6;
+var CHAR_NAME_ARR = [	'dante','biko','ken','brittany','chike','charles','brian',
+						'nick','leonel','reid','alex','david','eric','jonathan'];
 var FRAME_W = 40;
 var FRAME_H = 40;
-// walk - 0, run - 3, throw - 5, idle - 11, kick - 13
-var ACTION_Y = [0,3,5,11,13];
-var FPS = 6;
 
 var canvasBkgd;
-var canvasFgd;
 var cBkgd;
-var cFgd;
+// "associative array" of character canvas elements
+var canvasCharArr = new Object();
+// "associative array" of character canvas contexts
+var charArr = new Object();
+// "associative array" of character sprite sheets
+var sheetArr = new Object();
 
-var sheet;
-
-// position of frame within sprite sheet
-var fXPos = 0;
-var fYPos = 0;
-
-var xPos = 0;
-var yPos = 0;
-
-var numFrames;
-
-var actionIndex = 0;
-
-var index = 0;
+var numSheetsLoaded = 0;
 
 var loopInterval;
 
-var isPendingActionSwitch = false;
-
 $(document).ready(function() {
-	initButtons();
-	initAnimation();
+	initChars();
 });
 
-function initButtons() {
-	$('button').click(function() {
-		startAction($(this).attr('id'));
-	});
-}
-
-function initAnimation() {
+function initChars() {
 	canvasBkgd = $('#canvas_bkgd');
-	canvasFgd = $('#canvas_fgd');
-
-	canvasBkgd[0].width = C_W;
-	canvasBkgd[0].height = C_H;
-	canvasFgd[0].width = FRAME_W;
-	canvasFgd[0].height = FRAME_H;
-
 	cBkgd = canvasBkgd[0].getContext('2d');
-	cFgd = canvasFgd[0].getContext('2d');
 
-	// start idle
-	actionIndex = 3;
+	var len = CHAR_NAME_ARR.length;
 
-	fYPos = ACTION_Y[actionIndex] * FRAME_H;
-	numFrames = NUM_FRAMES[actionIndex];
-
-	sheet = new Image();
-	sheet.onload = function() {
-		loopInterval = setInterval(loop, 1000/FPS);
+	for(var i=0; i<len; i++) {
+		// get 2D contexts of character canvases
+		charArr[CHAR_NAME_ARR[i]] = $('#char_'+CHAR_NAME_ARR[i])[0].getContext('2d');
+		// load sprite sheets
+		sheetArr[CHAR_NAME_ARR[i]] = new Image();
+		sheetArr[CHAR_NAME_ARR[i]].onload = function() {
+			numSheetsLoaded ++;
+			if(numSheetsLoaded >= CHAR_NAME_ARR.length) {
+				//loopInterval = setInterval(loop, 1000/FPS);
+				displaySprites();
+			}
+		}
+		sheetArr[CHAR_NAME_ARR[i]].src = 'images/sheet_'+CHAR_NAME_ARR[i]+'.gif';
 	}
-	sheet.src = "images/sprite_sheet1.gif";
 }
 
-function startAction(buttonIdStr) {
+function displaySprites() {
+	var len = CHAR_NAME_ARR.length;
 
-	switch(buttonIdStr) {
-
-		case 'button_walk':
-		actionIndex = 0;
-		break;
-
-		case 'button_run':
-		actionIndex = 1;
-		break;
-
-		case 'button_throw':
-		actionIndex = 2;
-		break;
-
-		case 'button_kick':
-		actionIndex = 4;
-		break;
-
+	for(var i=0; i<len; i++) {
+		charArr[CHAR_NAME_ARR[i]].drawImage(sheetArr[CHAR_NAME_ARR[i]], 0, 0, FRAME_W, FRAME_H, 0, 0, FRAME_W, FRAME_H);
 	}
-
-	isPendingActionSwitch = true;
 }
 
 function loop() {
-	cFgd.clearRect(0, 0, C_W, C_H);
-	console.log()
-	cFgd.drawImage(sheet, fXPos, fYPos, FRAME_W, FRAME_H, xPos, yPos, FRAME_W, FRAME_H);
-
-	fXPos += FRAME_W;
-
-	index ++;
-
-	if(index >= numFrames) {
-		fXPos = 0;
-		index = 0;
-	}
-
-	if(isPendingActionSwitch) {
-		clearInterval(loopInterval);
-		index = 0;
-		fXPos = 0;
-		fYPos = ACTION_Y[actionIndex] * FRAME_H;
-		numFrames = NUM_FRAMES[actionIndex];
-		isPendingActionSwitch = false;
-		loopInterval = setInterval(loop, 1000/FPS);
-	}
+	
 }

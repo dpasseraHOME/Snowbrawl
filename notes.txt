@@ -1,8 +1,12 @@
-Now
-
 Next
-- size canvas to fit sprite frame
-- layer multiple canvases
-	- any performance degradation, if 12 sprites are doing their idle animations?
-	- if so, have frames without animation
-- character class?
+- Display Dante, Biko, Ken, Britanny, Chike, Charles, Brian, Nick, Jonathan, Leonel, Reid, Alex, Eric, David sprites
+
+- Can I write a jQuery plugin for sprite animation?  How would I do it for multiple sprites?
+	- $.SpriteManager({
+				"sprite1":
+						{sheet:"images/sheet1.gif",
+						anim:["idle","walk","throw"]},
+				"sprite2":
+						{sheet:"images/sheet2.gif",
+						anim:["idle","walk","throw"]}
+	})
