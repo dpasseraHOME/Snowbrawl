@@ -23,21 +23,21 @@
 
 	<canvas id="canvas_bkgd"></canvas>
 
-	<canvas id="char_dante"></canvas>
-	<canvas id="char_biko"></canvas>
-	<canvas id="char_ken"></canvas>
-	<canvas id="char_brittany"></canvas>
-	<canvas id="char_chike"></canvas>
-	<canvas id="char_charles"></canvas>
-	<canvas id="char_brian"></canvas>
+	<canvas class="char" id="char_dante"></canvas>
+	<canvas class="char" id="char_biko"></canvas>
+	<canvas class="char" id="char_ken"></canvas>
+	<canvas class="char" id="char_brittany"></canvas>
+	<canvas class="char" id="char_chike"></canvas>
+	<canvas class="char" id="char_charles"></canvas>
+	<canvas class="char" id="char_brian"></canvas>
 
-	<canvas id="char_nick"></canvas>
-	<canvas id="char_leonel"></canvas>
-	<canvas id="char_reid"></canvas>
-	<canvas id="char_alex"></canvas>
-	<canvas id="char_eric"></canvas>
-	<canvas id="char_david"></canvas>
-	<canvas id="char_jonathan"></canvas>
+	<canvas class="char" id="char_nick"></canvas>
+	<canvas class="char" id="char_leonel"></canvas>
+	<canvas class="char" id="char_reid"></canvas>
+	<canvas class="char" id="char_alex"></canvas>
+	<canvas class="char" id="char_eric"></canvas>
+	<canvas class="char" id="char_david"></canvas>
+	<canvas class="char" id="char_jonathan"></canvas>
 
 </body>
 
