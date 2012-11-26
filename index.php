@@ -39,6 +39,31 @@
 	<canvas class="char" id="char_david"></canvas>
 	<canvas class="char" id="char_jonathan"></canvas>
 
+	<div>
+		<select id="char_select">
+			<option value="dante">Dante</option>
+			<option value="biko">Biko</option>
+			<option value="ken">Ken</option>
+			<option value="brittany">Brittany</option>
+			<option value="chike">Chike</option>
+			<option value="charles">Charles</option>
+			<option value="brian">Brian</option>
+			<option value="nick">Nick</option>
+			<option value="leonel">Leonel</option>
+			<option value="reid">Reid</option>
+			<option value="alex">Alex</option>
+			<option value="david">David</option>
+			<option value="eric">Eric</option>
+			<option value="jonathan">Jonathan</option>
+		</select>
+	</div>
+
+	<div id="buttons_container">
+		<button onclick="onClick_action('idle')">Idle</button>
+		<button onclick="onClick_action('throw')">Throw</button>
+		<button onclick="onClick_action('kick')">Kick</button>
+	</div>
+
 </body>
 
 </html>

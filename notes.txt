@@ -1,6 +1,7 @@
 Next
-- idle animations for each - array of intervals? or one loop that runs through all sprites then calls itself at the end?
-	- isPendingActionArr is checked on each run through the loop.  If isPendingAction for any given character, all that char is reset and new animation is played
+- switch action
+
+Later
 - refactor as character objects, rather than using arrays
 
 - Can I write a jQuery plugin for sprite animation?  How would I do it for multiple sprites?

@@ -78,6 +78,32 @@ function initChars() {
 	}
 }
 
+function onClick_action(actionStr) {
+	switch(actionStr) {
+		case 'idle':
+		switchAction($('#char_select').val(), 0);
+		break;
+
+		case 'throw':
+		switchAction($('#char_select').val(), 1);
+		break;
+
+		case 'kick':
+		switchAction($('#char_select').val(), 2);
+		break;
+	}
+}
+
+function switchAction(charNameStr, actionIndex) {
+	var charIndex = CHAR_NAME_ARR.indexOf(charNameStr);
+
+	// set action index of character to new action index
+	actionIndexArr[charIndex] = actionIndex;
+	console.log(actionIndexArr[charIndex]);
+
+	isPendingActionSwitchArr[charIndex] = true;
+}
+
 function loop() {
 	var date = new Date();
 	var aDate = date.getTime();
@@ -94,10 +120,15 @@ function loop() {
 		//console.log(CHAR_NAME_ARR[i] + " : " + frameXPosArr[i]+","+frameYPosArr[i]+" : "+charXPosArr[i]+","+charYPosArr[i]);
 		// update for next frame
 		if(isPendingActionSwitchArr[i]) {
+			// reset animation frame pointers
+			frameIndexArr[i] = 0;
+			frameXPosArr[i] = 0;
+			frameYPosArr[i] = ACTION_I[actionIndexArr[i]] * FRAME_H;
 
+			isPendingActionSwitchArr[i] = false;
 		} else {
 			if((frameIndexArr[i]+1) >= NUM_ACTION_FRAMES[actionIndexArr[i]]) {
-				// if at end of animation, reset
+				// if at end of animation, reset animation frame pointers
 				frameXPosArr[i] = 0;
 				frameIndexArr[i] = 0;
 			} else {
