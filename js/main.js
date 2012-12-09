@@ -99,7 +99,7 @@ function switchAction(charNameStr, actionIndex) {
 
 	// set action index of character to new action index
 	actionIndexArr[charIndex] = actionIndex;
-	console.log(actionIndexArr[charIndex]);
+	//console.log(actionIndexArr[charIndex]);
 
 	isPendingActionSwitchArr[charIndex] = true;
 }
